@@ -1,0 +1,13 @@
+.dashboard-container {
+  display: flex;
+  justify-content: space-between;
+
+  .block-containers {
+    width: 45%;
+    border: 1px solid grey;
+  }
+
+  & * {
+    width: max-content;
+  }
+}

@@ -1,0 +1,37 @@
+.input-container {
+  display: flex;
+}
+
+.custom-input {
+  width: 25em;
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  border-bottom: 1px solid black;
+  padding: 0.5em;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px 8px 0 0;
+
+  outline: none;
+}
+
+.input-button {
+  display: flex;
+  align-items: center;
+  width: max-content;
+
+  margin-left: 1em;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 2px 13px;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: #fefefe;
+  }
+}

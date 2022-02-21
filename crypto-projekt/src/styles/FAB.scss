@@ -1,0 +1,28 @@
+.fab-container {
+  position: fixed;
+
+  transition: all 0.3s ease;
+
+  bottom: 2em;
+  right: 2em;
+
+  &:hover {
+    rotate: 360deg;
+
+    .fab-inner-div {
+      opacity: 1;
+    }
+  }
+
+  img {
+    width: 5em;
+  }
+
+  .fab-inner-div {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    opacity: 0;
+  }
+}
