@@ -1,0 +1,9 @@
+###
+
+GET http://127.0.0.1:5000/block
+
+################################
+GET http://127.0.0.1:5000/transactions?txHash=ce3edd0bb9bf55ce876e82d8d6999e7b594eaea0f74949a435e1b4267885e244
+
+################################
+GET http://127.0.0.1:5000/transactions?txHash=ce3edd0bb9bf55ce876e82d8d6999e7b594eaea0f74949a435e1b4267885e244

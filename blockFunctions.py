@@ -24,13 +24,13 @@ def calculateBlockFeeSum(block):
         # Izvrtit ce kroz sve tx u bloku
         # tx = "ee10fb171a23cb4d7e8180bdb7ae55260e8f2fd49de408b2c477bf71acdc9900"
         cleanTx = getCleanTx(tx)
-        feeSum += feeCalculation(cleanTx)
+        feeSum += feeCalc(cleanTx)
 
     return feeSum
 
 
 # Calculate fees
-def feeCalculation(tx):
+def feeCalc(tx):
     # Provjerava da nije nagrada za blok
     if "coinbase" in tx["vin"][0]:
         return 0
@@ -61,7 +61,7 @@ def tx_amountIn(tx_details):
 
 def getTransactionInfo(tx):
     txInfo = getCleanTx(tx)
-    txFee = feeCalculation(txInfo)
+    txFee = feeCalc(txInfo)
 
     # Decimal cannot get serialized
     txFee = str(txFee)
@@ -71,11 +71,11 @@ def getTransactionInfo(tx):
     return {'txInfo': txInfo, 'txFee': txFee}
 
 
-def getBlockInfo(blockHash):
-    blockInfo = rpc_client.getblock(blockHash)
-    numberOfTx = bl_numOfTx(blockInfo)
+def getBlockData(blockHash):
+    blockData = rpc_client.getblock(blockHash)
+    numberOfTx = bl_numOfTx(blockData)
     # blockFeeSum = calculateBlockFeeSum(blockHash)
 
-    blockInfo["difficulty"] = str(blockInfo["difficulty"])
+    blockData["difficulty"] = str(blockData["difficulty"])
 
-    return {"blockInfo": blockInfo, "numberOfTx": numberOfTx}
+    return {"blockData": blockData, "numberOfTx": numberOfTx}

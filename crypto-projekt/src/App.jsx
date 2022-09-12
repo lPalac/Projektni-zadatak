@@ -3,14 +3,13 @@ import Input from "./components/Input";
 import "../src/styles/Input.scss";
 import SimpleKeyValPair from "./components/SimpleKeyValPair";
 import BlockResults from "./components/BlockResults";
+import blockchainlogo from "./images/blockchainlogo.png";
 
 import bitcoinIcon from "./images/bitcoin-icon.png";
 import TransactionResults from "./components/TransactionResults";
-import FAB from "./components/FAB";
+import StickyButton from "./components/StickyButton";
 
-const isUserInputBlock = (hash) => {
-  return hash.substring(0, 5) === "00000";
-};
+const isUserInputBlock = (hash) => hash.substring(0, 5) === "00000";
 
 function App() {
   const [userInput, setUserInput] = useState("");
@@ -40,7 +39,7 @@ function App() {
       .then((json) => {
         if (json && !json.message) {
           setTx(null);
-          setBlock(json.blockInfo.blockInfo);
+          setBlock(json.blockData.blockData);
         }
       });
   };
@@ -53,29 +52,18 @@ function App() {
           target={"_blank"}
           rel="noreferrer"
         >
-          <h1>Block explorer</h1>
+          <img src={blockchainlogo} alt="blockchainlogo" />
         </a>
       </nav>
       <div className="body-container">
         <div>
-          <div className="bitcoin-title-container">
-            <div>
-              <h2>
-                <img src={bitcoinIcon} alt="bitcoin-icon" />
-                Bitcoin testnet
-              </h2>
-            </div>
-
+          <div className="input-section">
+            <h1>Upišite hash od blocka ili tranzakcije sa bitcoin testneta</h1>
             <Input
               placeholder={"Enter your txid, block hash, block num..."}
               setUserInput={setUserInput}
             />
           </div>
-          <p>
-            This is my Bitcoin blockchain explorer to view blocks and
-            transactions on Bitcoin Testnet. Feel free to search for a
-            transaction or block in the search!
-          </p>
         </div>
         <h2>Results</h2>
         {block && <BlockResults block={block} txOnClick={searchTx} />}
@@ -86,7 +74,7 @@ function App() {
             txOnClick={searchTx}
           />
         )}
-        <FAB />
+        <StickyButton />
       </div>
     </div>
   );

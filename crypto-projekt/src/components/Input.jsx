@@ -16,6 +16,7 @@ const Input = ({ onChange, placeholder, value, setUserInput }) => {
         className="custom-input"
         placeholder={placeholder}
       />
+
       <div
         onClick={() => {
           setUserInput(input);

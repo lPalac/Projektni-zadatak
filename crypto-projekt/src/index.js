@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "../src/styles/index.scss";
-import "../src/styles/FAB.scss";
+import "../src/styles/stickyButton.scss";
 import App from "./App";
 
 ReactDOM.render(

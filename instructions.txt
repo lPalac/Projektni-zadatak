@@ -1,1 +1,1 @@
-C:/Users/David/AppData/Local/Programs/Python/Python310/python.exe Server.py
+/usr/local/bin/python3 Server.py

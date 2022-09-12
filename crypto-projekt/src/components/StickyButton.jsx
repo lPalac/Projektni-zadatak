@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
 import bitcoinIcon from "../images/bitcoin-icon.png";
+import React, { useState, useEffect } from "react";
 
-const FAB = () => {
+const StickyButton = () => {
   const [price, setPrice] = useState(null);
 
   useEffect(() => {
@@ -17,19 +17,21 @@ const FAB = () => {
   }, []);
 
   return (
-    <div className="fab-container">
+    <div className="stickyButton-container">
       {price && (
         <a
-          href="https://www.coingecko.com/en/coins/bitcoin"
+          href="https://www.coindesk.com/price/bitcoin/"
           target="_blank"
           rel="noreferrer"
         >
           <img src={bitcoinIcon} alt="bitcoin-icon" />
-          <div className="fab-inner-div">${price.usd.toLocaleString()}</div>
+          <div className="stickyButton-inner-div">
+            ${price.usd.toLocaleString()}
+          </div>
         </a>
       )}
     </div>
   );
 };
 
-export default FAB;
+export default StickyButton;
