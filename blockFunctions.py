@@ -58,7 +58,6 @@ def tx_amountIn(tx_details):
     return amount
 # ------------------------
 
-
 def getBlockData(blockHash):
 
     blockData = rpc_client.getblock(blockHash)
@@ -67,15 +66,13 @@ def getBlockData(blockHash):
 
     return {"blockData": blockData, "numberOfTx": numberOfTx}
 
-
 def getTransactionInfo(tx):
 
     txInfo = getCleanTx(tx)
     txFee = feeCalc(txInfo)
     txFee = str(txFee)
-    
+
     for vout in txInfo["vout"]:
         vout["value"] = str(vout["value"])
 
     return {'txInfo': txInfo, 'txFee': txFee}
-

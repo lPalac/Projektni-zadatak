@@ -10,6 +10,17 @@ api = Api(app)
 cors = CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 
+class Block(Resource):
+    def get(self):
+        try:
+            parser = reqparse.RequestParser()  # initialize
+            parser.add_argument('blockHash', required=True, location="args") #location="args"
+            arguments = parser.parse_args()
+
+            blockData = getBlockData(arguments["blockHash"])
+            return {"blockData": blockData}, 200
+        except:
+            print("BlockError")
 
 class Transactions(Resource):
     def get(self):
@@ -21,23 +32,8 @@ class Transactions(Resource):
             txInfo = getTransactionInfo(arguments["txHash"])
             return {"fullTxInfo": txInfo}, 200
         except:
-            print("Error at transaction")
-
-
-class Block(Resource):
-    def get(self):
-        try:
-            parser = reqparse.RequestParser()  # initialize
-            parser.add_argument('blockHash', required=True, location="args") #location="args"
-
-            arguments = parser.parse_args()
-
-            blockData = getBlockData(arguments["blockHash"])
-            return {"blockData": blockData}, 200
-        except:
-            print("Error at block")
-
-
+            print("TransactionError")
+            
 api.add_resource(Transactions, '/transactions')
 api.add_resource(Block, '/block')
 
