@@ -59,23 +59,23 @@ def tx_amountIn(tx_details):
 # ------------------------
 
 
+def getBlockData(blockHash):
+
+    blockData = rpc_client.getblock(blockHash)
+    numberOfTx = bl_numOfTx(blockData)
+    blockData["difficulty"] = str(blockData["difficulty"])
+
+    return {"blockData": blockData, "numberOfTx": numberOfTx}
+
+
 def getTransactionInfo(tx):
+
     txInfo = getCleanTx(tx)
     txFee = feeCalc(txInfo)
-
-    # Decimal cannot get serialized
     txFee = str(txFee)
+    
     for vout in txInfo["vout"]:
         vout["value"] = str(vout["value"])
 
     return {'txInfo': txInfo, 'txFee': txFee}
 
-
-def getBlockData(blockHash):
-    blockData = rpc_client.getblock(blockHash)
-    numberOfTx = bl_numOfTx(blockData)
-    # blockFeeSum = calculateBlockFeeSum(blockHash)
-
-    blockData["difficulty"] = str(blockData["difficulty"])
-
-    return {"blockData": blockData, "numberOfTx": numberOfTx}

@@ -65,7 +65,7 @@ function App() {
             />
           </div>
         </div>
-        <h2>Results</h2>
+
         {block && <BlockResults block={block} txOnClick={searchTx} />}
         {tx && (
           <TransactionResults
