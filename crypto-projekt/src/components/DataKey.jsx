@@ -1,12 +1,12 @@
 import React from "react";
 
-const CleanKeyVal = ({ itemKey, val }) => {
+const DataKey = ({ itemKey, value }) => {
   return (
     <div className="clean-keyval-container">
       <h5>{itemKey}</h5>
-      <p>{val}</p>
+      <p>{value}</p>
     </div>
   );
 };
 
-export default CleanKeyVal;
+export default DataKey;

@@ -28,6 +28,24 @@ nav {
   margin: 0 auto;
 }
 
+.stickyButton-container {
+  position: fixed;
+  transition: all 0.3s ease;
+  top: 2em;
+  right: 2em;
+
+  &:hover {
+    scale: 1.2;
+    .stickyButton-inner-div {
+      opacity: 1;
+    }
+  }
+
+  img {
+    width: 5em;
+  }
+}
+
 .bitcoin-title-container {
   display: flex;
   align-items: start;
@@ -55,13 +73,13 @@ nav {
   }
 }
 
-.key-val-container {
+.data-val-container {
   display: flex;
-  border-bottom: 1px solid rgb(223, 227, 235);
+  border-bottom: 1px solid rgb(225, 228, 234);
   padding: 0.6em 0;
 
   h5 {
-    color: rgb(103, 113, 133);
+    color: rgb(109, 113, 121);
     font-size: 1rem;
     width: 12em;
     margin: 0;
@@ -78,7 +96,7 @@ nav {
   align-items: center;
 
   h5 {
-    color: rgb(103, 113, 133);
+    color: rgb(109, 113, 121);
     min-width: 100px;
   }
 }
@@ -134,9 +152,9 @@ nav {
 }
 
 .divider-grey {
+  background-color: #4d4d4d;
   width: 100%;
   height: 1px;
-  background-color: #4d4d4d;
   margin: 1em 0;
 }
 

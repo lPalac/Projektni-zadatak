@@ -1,39 +1,28 @@
 import React from "react";
 import "../styles/dashboard.scss";
-import SimpleKeyValPair from "./SimpleKeyValPair";
-import CleanKeyVal from "./CleanKeyVal";
+import DataKey from "./DataKey";
 import InfoTitle from "./InfoTitle";
+import DataPair from "./DataPair.jsx";
 
-const TransactionResults = ({ tx, blockOnClick, txOnClick }) => {
-  console.log(tx);
-  console.log("_-----------");
+const TransactionResults = ({ tx, txOnClick }) => {
   const txInfo = tx.txInfo;
 
   return (
     <div className="transaction-container">
       <InfoTitle
         title="Summary"
-        hoverText="An overview of the transactions inputs, outputs, amounts and whether or not it's been confirmed."
+        hoverText="An overview of the transactions inputs,
+         outputs, amounts and whether or not it's been confirmed."
       />
 
       <div>
-        {<SimpleKeyValPair objKey="Hash" value={txInfo.hash} />}
-        {<SimpleKeyValPair objKey="Size" value={txInfo.size} />}
-        {<SimpleKeyValPair objKey="VSize" value={txInfo.vsize} />}
-        {<SimpleKeyValPair objKey="Weight" value={txInfo.weight} />}
-        {
-          <SimpleKeyValPair
-            objKey="Amount of outputs"
-            value={txInfo.vout.length}
-          />
-        }
-        {
-          <SimpleKeyValPair
-            objKey="Amount of inputs"
-            value={txInfo.vin.length}
-          />
-        }
-        {<SimpleKeyValPair objKey="Fee" value={tx.txFee + "BTC"} />}
+        {<DataPair objKey="Hash" value={txInfo.hash} />}
+        {<DataPair objKey="Size" value={txInfo.size} />}
+        {<DataPair objKey="VSize" value={txInfo.vsize} />}
+        {<DataPair objKey="Weight" value={txInfo.weight} />}
+        {<DataPair objKey="Amount of outputs" value={txInfo.vout.length} />}
+        {<DataPair objKey="Amount of inputs" value={txInfo.vin.length} />}
+        {<DataPair objKey="Fee" value={tx.txFee + "BTC"} />}
 
         <InfoTitle
           title="Inputs"
@@ -43,19 +32,19 @@ const TransactionResults = ({ tx, blockOnClick, txOnClick }) => {
           return (
             <div className="vin-container" key={index}>
               <div>
-                <CleanKeyVal itemKey="Index" val={index} />
+                <DataKey itemKey="Index" val={index} />
               </div>
               <div onClick={() => txOnClick(el.txid)} className="clickable">
-                <CleanKeyVal itemKey="TxID" val={el.txid} />
+                <DataKey itemKey="TxID" val={el.txid} />
               </div>
               {el.scriptSig?.asm && (
-                <CleanKeyVal itemKey="Script Sig" val={el.scriptSig.asm} />
+                <DataKey itemKey="Script Sig" val={el.scriptSig.asm} />
               )}
-              <CleanKeyVal itemKey="Sequence" val={el.sequence} />
+              <DataKey itemKey="Sequence" val={el.sequence} />
               <h5>TXin witness</h5>
               {el.txinwitness &&
                 el.txinwitness.map((el2, index) => (
-                  <CleanKeyVal itemKey={index} val={el2} />
+                  <DataKey itemKey={index} val={el2} />
                 ))}
               <div className="divider-grey" />
             </div>
@@ -69,12 +58,12 @@ const TransactionResults = ({ tx, blockOnClick, txOnClick }) => {
           return (
             <div className="vin-container" key={index}>
               <div>
-                <CleanKeyVal itemKey="Index" val={el.n} />
+                <DataKey itemKey="Index" val={el.n} />
               </div>
-              <CleanKeyVal itemKey="Value" val={`${el.value} BTC`} />
+              <DataKey itemKey="Value" val={`${el.value} BTC`} />
               {el.scriptPubKey && (
                 <>
-                  <CleanKeyVal itemKey="Script Sig" val={el.scriptPubKey.asm} />
+                  <DataKey itemKey="Script Sig" val={el.scriptPubKey.asm} />
                   <h4>Addresses</h4>
 
                   {el.scriptPubKey?.addresses?.length &&
@@ -85,7 +74,7 @@ const TransactionResults = ({ tx, blockOnClick, txOnClick }) => {
                         }}
                         className="clickable"
                       >
-                        <CleanKeyVal itemKey={index} val={address} />
+                        <DataKey itemKey={index} val={address} />
                       </div>
                     ))}
                 </>

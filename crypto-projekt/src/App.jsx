@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Input from "./components/Input";
 import "../src/styles/Input.scss";
-import SimpleKeyValPair from "./components/SimpleKeyValPair";
 import BlockResults from "./components/BlockResults";
 import blockchainlogo from "./images/blockchainlogo.png";
 
 import bitcoinIcon from "./images/bitcoin-icon.png";
 import TransactionResults from "./components/TransactionResults";
-import StickyButton from "./components/StickyButton";
 
 const isUserInputBlock = (hash) => hash.substring(0, 5) === "00000";
 
@@ -74,7 +72,17 @@ function App() {
             txOnClick={searchTx}
           />
         )}
-        <StickyButton />
+        <div className="stickyButton-container">
+          {
+            <a
+              href="https://www.coindesk.com/price/bitcoin/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={bitcoinIcon} alt="bitcoin-icon" />
+            </a>
+          }
+        </div>
       </div>
     </div>
   );

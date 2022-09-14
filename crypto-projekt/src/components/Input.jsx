@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Input = ({ onChange, placeholder, value, setUserInput }) => {
+const Input = ({ placeholder, value, setUserInput }) => {
   if (value == null) {
     value = "";
   }

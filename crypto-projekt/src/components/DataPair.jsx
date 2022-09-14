@@ -1,6 +1,6 @@
 import React from "react";
 
-const SimpleKeyValPair = ({ objKey, value }) => {
+const DataPair = ({ objKey, value }) => {
   return (
     <div className="data-val-container">
       <h5>{objKey}</h5>
@@ -9,4 +9,4 @@ const SimpleKeyValPair = ({ objKey, value }) => {
   );
 };
 
-export default SimpleKeyValPair;
+export default DataPair;
